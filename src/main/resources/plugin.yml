@@ -1,0 +1,21 @@
+name: OptiSolo
+version: 1.0.0
+main: ru.optisolo.OptiSoloPlugin
+api-version: 1.18
+author: OptiSolo
+description: Personal solo worlds 10k x 10k with friends, GUI menu, homes, reports and starter kit.
+website: https://github.com/igor1944/OptiSolo_Plugin
+
+commands:
+  solo:
+    description: Personal solo world management
+    usage: /solo [args]
+    aliases: [isolo, mysolo, sw]
+
+permissions:
+  optisolo.use:
+    description: Allows using solo worlds
+    default: true
+  optisolo.admin:
+    description: Full admin access to OptiSolo
+    default: op

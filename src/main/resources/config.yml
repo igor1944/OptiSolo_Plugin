@@ -1,0 +1,98 @@
+# ============================================================
+#  OptiSolo v1.0.0 — персональные миры для Paper 1.18.2
+#  Каждый игрок может создать свой мир 10000 x 10000,
+#  приглашать друзей, выдавать доверенный доступ.
+# ============================================================
+
+world:
+  # Размер границы мира (10000 = карта 10000 x 10000 с центром в 0,0)
+  border-size: 10000.0
+  # Тип мира по умолчанию: NORMAL, FLAT, VOID
+  default-type: NORMAL
+  # Сид нового мира (0 = случайный сид)
+  seed: 0
+  # --- Оптимизация ---
+  # Не держать спавн мира в памяти (сильно экономит RAM на пустых мирах)
+  keep-spawn-in-memory: false
+  # Автосохранение миров
+  autosave: true
+  # Дальность прорисовки и симуляции для соло-миров (меньше = легче серверу)
+  view-distance: 6
+  simulation-distance: 5
+  # Через сколько минут выгружать пустой мир из памяти (0 = никогда)
+  unload-after-minutes-empty: 5
+  # Максимум одновременно загруженных соло-миров (старые пустые выгружаются)
+  max-loaded-worlds: 20
+  # Разрешить порталы в ад/энд из соло-миров (создаёт +2 мира на игрока, тяжело!)
+  allow-nether-end: false
+  # Сложность новых миров: PEACEFUL, EASY, NORMAL, HARD
+  default-difficulty: NORMAL
+  # Гейммоды, применяемые к каждому соло-миру при загрузке
+  gamerules:
+    doMobSpawning: true
+    mobGriefing: false
+    doDaylightCycle: true
+    doFireTick: true
+    keepInventory: false
+    randomTickSpeed: 3
+    spawnRadius: 0
+
+# Главный мир сервера (куда возвращать игрока). "" = первый загруженный мир.
+main-world-name: ""
+
+# Раздельные инвентари: выживание и соло-миры не смешиваются.
+# true = у каждого игрока отдельный инвентарь/броня/эндер-сундук/опыт в соло-мирах.
+inventory-separation: true
+# Режим игры по умолчанию в соло-мире
+default-gamemode-solo: SURVIVAL
+
+# Стартовый набор при создании мира (МАТЕРИАЛ:КОЛИЧЕСТВО)
+starter-kit:
+  - "STONE_SWORD:1"
+  - "STONE_PICKAXE:1"
+  - "STONE_AXE:1"
+  - "STONE_SHOVEL:1"
+  - "BREAD:16"
+  - "TORCH:16"
+  - "OAK_PLANKS:32"
+# true = набор выдаётся только один раз за всё время
+kit-once: false
+# Кулдаун повторного получения набора (/solo kit), в минутах
+kit-cooldown-minutes: 1440
+
+invites:
+  # Сколько минут действует приглашение
+  expire-minutes: 10
+  # Можно ли заходить в мир друга, когда владельца нет онлайн
+  allow-offline-owner-visit: true
+  # Максимум доверенных игроков в одном мире
+  max-trusted: 10
+
+# Права гостей (те, кто зашёл по приглашению, но не в доверенных)
+visitors:
+  can-pickup: false
+  can-drop: false
+  # Могут ли гости бить мобов
+  can-pve: true
+  # Могут ли гости бить игроков
+  can-pvp: false
+  # Могут ли гости садиться в лодки/вагонетки/на лошадей
+  can-ride: false
+  # С чем гостям можно взаимодействовать (проверка "содержит подстроку" в названии блока)
+  allowed-interact-contains:
+    - "_DOOR"
+    - "_TRAPDOOR"
+    - "_FENCE_GATE"
+    - "_BUTTON"
+    - "PRESSURE_PLATE"
+    - "_BED"
+
+reports:
+  enabled: true
+  # Уведомлять админов в чате о новых жалобах
+  notify-admins: true
+
+# Админы (optisolo.admin) игнорируют защиту в чужих мирах
+admin-bypass: true
+# Кулдаун сообщения "нет доступа" (сек), чтобы не спамить
+deny-cooldown-seconds: 3
